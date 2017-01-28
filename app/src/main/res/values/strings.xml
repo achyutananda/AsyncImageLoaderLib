@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AsyncImageLoaderLib-Demo</string>
+
+
+    <string name="url1">https://images.unsplash.com/photo-1464550883968-cec281c19761?ixlib=rb-0.3.5\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026w=200\u0026fit=max\u0026s=9fba74be19d78b1aa2495c0200b9fbce</string>
+    <string name="url2">https://images.unsplash.com/photo-1464550838636-1a3496df938b?ixlib=rb-0.3.5\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026w=200\u0026fit=max\u0026s=9947985b2095f1c8fbbbe09a93b9b1d9
+ </string>
+       <string name="url3">https://images.unsplash.com/photo-1464550580740-b3f73fd373cb?ixlib=rb-0.3.5\u0026q=80\u0026fm=jpg\u0026crop=entropy\u0026w=200\u0026fit=max\u0026s=32eedaa5d930578ff89cff9195472650
+    </string>
+
+    <string name="data">http://pastebin.com/raw/wgkJgazE
+    </string>
+    <string name="all_description_of_user_">All description of user will be displayed</string>
+    <string name="show_more_details">Show more details</string>
+    <string name="user_details">User Details</string>
+    <string name="cancel">Cancel</string>
+</resources>

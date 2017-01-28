@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ImageLoaderLib</string>
+    <string name="downloading">Downloading&#8230;</string>
+</resources>

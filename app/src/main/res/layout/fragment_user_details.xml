@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/user_details_wall_height"-->
+    <!--android:background="@color/gray_light"-->
+    <!--/>-->
+    <ImageView
+        android:id="@+id/ivWall"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_details_wall_height"
+        android:scaleType="fitXY"
+        android:src="@color/gray_light"
+
+        />
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="@dimen/profile_expand_size"
+        android:layout_height="@dimen/profile_expand_size"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/user_details_profile_top_margin"
+        android:src="@drawable/ic_image"
+
+        />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfile"
+        android:gravity="center"
+        android:text="Hello Mr."
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/profile_expand_text_size" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnMenuOpen">
+
+        <RelativeLayout
+            android:id="@+id/rlDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/all_description_of_user_"-->
+                <!--android:textColor="@color/gray_light" />-->
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/orange_transparent"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/layoutButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/tvDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingExtra="@dimen/dimen_4dp"
+                    android:padding="@dimen/dimen_4dp"
+                    android:text="@string/user_details"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:textStyle="bold" />
+
+                <!--<Button-->
+                <!--style="@style/Button"-->
+                <!--android:layout_marginBottom="@dimen/activity_vertical_margin"-->
+                <!--android:text="@string/add_as_favorite" />-->
+
+                <Button
+                    style="@style/Button"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:onClick="launchMenu"
+                    android:text="@string/cancel" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/btnMenuOpen"
+        android:layout_width="@dimen/dimen_56dp"
+        android:layout_height="@dimen/dimen_56dp"
+        android:layout_below="@+id/tvName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:adjustViewBounds="true"
+        android:background="@drawable/rounded_button"
+        android:elevation="@dimen/dimen_4dp"
+        android:onClick="launchMenu"
+        android:src="@drawable/ic_expand_more" />
+</RelativeLayout>
