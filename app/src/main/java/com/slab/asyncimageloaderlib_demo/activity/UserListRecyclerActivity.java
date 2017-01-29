@@ -17,6 +17,11 @@ import android.widget.RelativeLayout;
 import com.slab.asyncimageloaderlib_demo.R;
 import com.slab.asyncimageloaderlib_demo.fragment.RecyclerFragment;
 
+/**
+ * RecyclerView loads 10 items at a time, when it reach the end of the list will load next item. Animation added while scrolling up or down in RecyclerView.
+ * - Material UI elements added in Sample application(i.e. Ripple effect, Material buttons, Animations, fragment shared element transition etc ).
+ * - Pull to refresh functionality is added with recycler view, which will refresh the data set.
+ */
 public class UserListRecyclerActivity extends AppCompatActivity {
     boolean flag = true;
 

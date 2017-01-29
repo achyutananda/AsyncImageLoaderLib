@@ -2,8 +2,6 @@ package com.slab.imageloaderlib;
 
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,17 +10,26 @@ import java.net.URLConnection;
 
 public abstract class LoadStringFromURL extends AsyncTask<String, Void, String> {
 
-
+    /**
+     * This AsyncTask can be capable of downloading Text data from Remote resource i.e xml,json etc.
+     *
+     * @param params
+     * @return
+     */
     @Override
     protected String doInBackground(String... params) {
         /**
          * check in cache first if not available then go for download
          */
         if (Cache.memoryCacheStorage.containsKey(params[0])) {
-//            Log.i("found text", params[0] + "\nCache Size:" + Cache.memoryCacheStorage.size());
+            /**
+             * Found the resource in Cache
+             */
             return (String) Cache.memoryCacheStorage.get(params[0]);
         } else {
-//            Log.i("not found text", params[0] + "\n Cache Size:" + Cache.memoryCacheStorage.size());
+            /**
+             * Resource not found in Cache
+             */
             String result = getContentFromURL(params[0]);
             Cache.memoryCacheStorage.put(params[0], result);
             return result;
@@ -35,10 +42,17 @@ public abstract class LoadStringFromURL extends AsyncTask<String, Void, String> 
         if (isCancelled()) {
             result = null;
         }
-
+        /**
+         * It will go to the implemented method in caller thread.
+         */
         onResponseReceived(result);
 
     }
+
+    /**
+     * This need to be implemented in LoadStringFromURL class, to use the String data it will returns
+     * @param result
+     */
     public abstract void onResponseReceived(Object result);
     /**
      * This method will download the content from url

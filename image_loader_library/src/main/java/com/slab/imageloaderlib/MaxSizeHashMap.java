@@ -3,7 +3,10 @@ package com.slab.imageloaderlib;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
+/**
+ * @param <K> key for the cache
+ * @param <V> Value of cache
+ */
 public class MaxSizeHashMap <K, V> extends LinkedHashMap<K, V> {
     private final int maxSize;
 

@@ -2,7 +2,6 @@ package com.slab.imageloaderlib;
 
 
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -10,6 +9,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * TextContentDownloaderTask will download the Text data and set to the TextView.
+ */
 public class TextContentDownloaderTask extends AsyncTask<String, Void, String> {
 
     private TextView mTextView;
@@ -27,10 +29,14 @@ public class TextContentDownloaderTask extends AsyncTask<String, Void, String> {
          * check in cache first if not available then go for download
          */
         if (Cache.memoryCacheStorage.containsKey(params[0])) {
-            Log.i("found text", params[0] + "\nCache Size:" + Cache.memoryCacheStorage.size());
+            /**
+             * Found the resource in Cache
+             */
             return (String) Cache.memoryCacheStorage.get(params[0]);
         } else {
-            Log.i("not found text", params[0] + "\n Cache Size:" + Cache.memoryCacheStorage.size());
+            /**
+             * Resource not found in Cache
+             */
             String result = getContentFromURL(params[0]);
             Cache.memoryCacheStorage.put(params[0], result);
             return result;
@@ -44,7 +50,9 @@ public class TextContentDownloaderTask extends AsyncTask<String, Void, String> {
             result = null;
         }
 
-
+        /**
+         * set the Text data to TextView
+         */
         if (mTextView != null && result != null) {
             mTextView.setText(result);
         }

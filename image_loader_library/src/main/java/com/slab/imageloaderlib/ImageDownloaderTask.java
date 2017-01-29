@@ -14,6 +14,9 @@ public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
 
     private ImageView mImageView;
 
+    /**
+     * @param mImageView the remote resource will be loaded to mImageView.
+     */
     public ImageDownloaderTask(ImageView mImageView) {
         this.mImageView = mImageView;
     }
@@ -24,11 +27,14 @@ public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
          * check in cache first if not available then go for download
          */
         if (Cache.memoryCacheStorage.containsKey(params[0])) {
-//            Log.i("found", params[0] + "\nCache Size:"+Cache.memoryCacheStorage.size());
+            /**
+             * Found the resource in Cache
+             */
             return (Bitmap) Cache.memoryCacheStorage.get(params[0]);
         } else {
-//            Log.i("not found", params[0] + "\n Cache Size:"+Cache.memoryCacheStorage.size());
-
+            /**
+             * Resource not found in Cache
+             */
             Bitmap bitmap = getContentFromURL(params[0]);
             Cache.memoryCacheStorage.put(params[0], bitmap);
             return bitmap;
@@ -44,9 +50,7 @@ public class ImageDownloaderTask extends AsyncTask<String, Void, Bitmap> {
 
 
         if (mImageView != null && bitmap != null) {
-
             mImageView.setImageBitmap(bitmap);
-
         }
 
 

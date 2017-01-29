@@ -25,6 +25,11 @@ public class ContentRecyclerAdapter extends RecyclerView.Adapter<ContentRecycler
     private Context mContext;
     private RecyclerView mRecyclerView;
 
+    /**
+     * @param mContext
+     * @param contentList   list of JSONObject
+     * @param mRecyclerView
+     */
     public ContentRecyclerAdapter(Context mContext, List<JSONObject> contentList, RecyclerView mRecyclerView) {
         this.mContext = mContext;
         this.contentList = contentList;
@@ -48,6 +53,9 @@ public class ContentRecyclerAdapter extends RecyclerView.Adapter<ContentRecycler
 
             holder.tvLike.setText(String.valueOf(rootObject.getInt("likes")));
             holder.tvName.setText(userObj.getString("name"));
+            /**
+             * loading the image resource
+             */
             new Loader(mContext).loadImage(holder.ivProfile, profileImgObj.getString("large"));
 
         } catch (Exception e) {
@@ -71,12 +79,6 @@ public class ContentRecyclerAdapter extends RecyclerView.Adapter<ContentRecycler
         return contentList.size();
     }
 
-//    public void addItem(String s) {
-//        contentList.add(s);
-//        notifyItemInserted(contentList.size());
-////        notifyDataSetChanged();
-//    }
-
     public void removeItem(String s) {
         int pos = contentList.indexOf(s);
         if (pos != -1 && contentList.size() > pos) {
@@ -96,18 +98,7 @@ public class ContentRecyclerAdapter extends RecyclerView.Adapter<ContentRecycler
     @SuppressLint("NewApi")
     void animate(RecyclerView.ViewHolder holder, boolean goesDown) {
 
-//        YoYo.with(Techniques.RubberBand)
-//                .duration(1000)
-//                .playOn(holder.itemView);
-//        AnimatorSet animatorSet = new AnimatorSet();
-//        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(holder.itemView, "scaleX" ,0.5F, 0.8F, 1.0F);
-//        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(holder.itemView, "scaleY", 0.5F, 0.8F, 1.0F);
         ObjectAnimator animatorTranslateY = ObjectAnimator.ofFloat(holder.itemView, "translationY", goesDown == true ? 300 : -300, 0);
-//        ObjectAnimator animatorTranslateX = ObjectAnimator.ofFloat(holder.itemView, "translationX", -50, 50, -30, 30, -20, 20, -5, 5, 0);
-//        animatorSet.playTogether(animatorTranslateX, animatorTranslateY, animatorScaleX, animatorScaleY);
-//        animatorSet.setInterpolator(new AnticipateInterpolator());
-//        animatorSet.setDuration(1000);
-// animatorSet.start();
         animatorTranslateY.setDuration(1000);
         animatorTranslateY.start();
 

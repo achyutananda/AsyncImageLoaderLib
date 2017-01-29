@@ -25,7 +25,10 @@ public class DownloadFileTask extends AsyncTask<String, Integer, String> {
     private Context mContext;
     private PowerManager.WakeLock mWakeLock;
 
-
+    /**
+     * @param mContext
+     * @param type     : Type of file need to be downloaded
+     */
     public DownloadFileTask(Context mContext, int type) {
         this.mContext = mContext;
         this.type = type;
@@ -127,12 +130,24 @@ public class DownloadFileTask extends AsyncTask<String, Integer, String> {
             Toast.makeText(mContext, "File downloaded\n" + filePath, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * It will generate a random value from min to max
+     *
+     * @param min
+     * @param max
+     * @return
+     */
     private int randInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
 
+    /**
+     *
+     * @param type Type of file to be downloaded
+     * @return String which will be the file name
+     */
     private String getFileName(int type) {
         String filePath = null;
         switch (type) {

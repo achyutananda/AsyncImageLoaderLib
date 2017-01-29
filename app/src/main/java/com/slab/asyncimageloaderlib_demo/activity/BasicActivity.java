@@ -12,9 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.slab.asyncimageloaderlib_demo.R;
-import com.slab.imageloaderlib.Loader;
 import com.slab.imageloaderlib.LoadStringFromURL;
+import com.slab.imageloaderlib.Loader;
 
+/**
+ * Basic uses of image loading library ,
+ * -loading image,json etc
+ * -Downloading file
+ * -Concurrent loading of images with same and different resource url
+ * -Configuration of max cache size
+ * -Cancelling the image loading( if user tap on the thumbnail image while loading then that request will be cancelled.
+ */
 public class BasicActivity extends AppCompatActivity {
 
     final int PERMISSION_ALL = 1;
@@ -61,7 +69,7 @@ public class BasicActivity extends AppCompatActivity {
                     tv.setText((String) result);
             }
         };
-        loaderTask.execute("http://pastebin.com/raw/wgkJgazE");
+        loaderTask.execute(getString(R.string.data));
 
 
         String[] PERMISSIONS = {Manifest.permission.WRITE_EXTERNAL_STORAGE};//Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -71,10 +79,18 @@ public class BasicActivity extends AppCompatActivity {
         } else {
             //download file
             Loader fileDownloader = new Loader(this);
+            /**
+             * Specify the file type which is publicly available some implemented type available in Loader.java
+             */
             fileDownloader.downLoadFile(Loader.JPG_FILE_TYPE, getString(R.string.url2));
         }
     }
 
+    /**
+     * @param context
+     * @param permissions String array which contain the permission name
+     * @return
+     */
     private boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {
@@ -98,14 +114,14 @@ public class BasicActivity extends AppCompatActivity {
                     Loader fileDownloader1 = new Loader(this);
                     fileDownloader1.downLoadFile(Loader.JPG_FILE_TYPE, getString(R.string.url1));
 
-                    Loader fileDownloader2 = new Loader(this);
-                    fileDownloader2.downLoadFile(Loader.PDF_FILE_TYPE, getString(R.string.url2));
-
-                    Loader fileDownloader3 = new Loader(this);
-                    fileDownloader3.downLoadFile(Loader.ZIP_FILE_TYPE, getString(R.string.url3));
-
-                    Loader fileDownloader4= new Loader(this);
-                    fileDownloader4.downLoadFile(Loader.DOC_FILE_TYPE, getString(R.string.url3));
+//                    Loader fileDownloader2 = new Loader(this);
+//                    fileDownloader2.downLoadFile(Loader.PDF_FILE_TYPE, "<.pdf file url>");
+//
+//                    Loader fileDownloader3 = new Loader(this);
+//                    fileDownloader3.downLoadFile(Loader.ZIP_FILE_TYPE, "<.zip file url>");
+//
+//                    Loader fileDownloader4= new Loader(this);
+//                    fileDownloader4.downLoadFile(Loader.DOC_FILE_TYPE, "<.doc file url>");
                 }
                 return;
             }

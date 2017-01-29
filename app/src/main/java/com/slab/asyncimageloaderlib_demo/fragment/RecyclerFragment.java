@@ -28,6 +28,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This fragment contents the RecyclerView and its functionality
+ */
 public class RecyclerFragment extends Fragment {
 
     private int pastVisiblesItems, visibleItemCount, totalItemCount;
